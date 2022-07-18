@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"micro-nacos/nacos"
+)
 
 func main() {
 	fmt.Println("Hello, World!")
+	nacos.Config()
 }
