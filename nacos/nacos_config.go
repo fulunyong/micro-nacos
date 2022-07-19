@@ -7,7 +7,7 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/vo"
 )
 
-func ConfigInit() {
+func RegisterServe() {
 
 	clientConfig := constant.ClientConfig{
 		NamespaceId:         "", // 如果需要支持多namespace，我们可以场景多个client,它们有不同的NamespaceId。当namespace是public时，此处填空字符串。
@@ -48,16 +48,10 @@ func ConfigInit() {
 		GroupName:   "DEFAULT_GROUP", // 默认值DEFAULT_GROUP
 	})
 	if err != nil {
+		fmt.Printf("注册服务异常%s\n", err)
 		return
 	}
 
 	//获取nacos存在服务的信息
-	instance, err := client.SelectOneHealthyInstance(vo.SelectOneHealthInstanceParam{
-		ServiceName: "goMicroServer",
-		GroupName:   "DEFAULT_GROUP",     // 默认值DEFAULT_GROUP
-		Clusters:    []string{"DEFAULT"}, // 默认值DEFAULT
-	})
-	fmt.Println(instance)
-	fmt.Println(err)
 
 }
