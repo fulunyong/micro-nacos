@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	v1 "micro-nacos/api/v1"
+	"micro-nacos/nacos"
 )
 
 var Index = cUser{}
@@ -16,5 +17,5 @@ func (c *cUser) Index(ctx context.Context, req *v1.IndexReq) (res *v1.IndexRes, 
 }
 func (c *cUser) Echo(ctx context.Context, req *v1.EchoReq) (res *v1.IndexRes, err error) {
 	fmt.Println("欢迎访问数据")
-	return &v1.IndexRes{Tips: "欢迎"}, err
+	return &v1.IndexRes{Tips: "im form :" + nacos.MustGetIntranetIp()}, err
 }
